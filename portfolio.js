@@ -66,6 +66,10 @@ async function main() {
         console.log("Usage: node portfolio.js <walletAddress> [tokens.json]");
         process.exit(1);
     }
+    if (!ethers.isAddress(wallet)) {
+        console.error(`ERROR: "${wallet}" is not a valid EVM wallet address (0x + 40 hex chars).`);
+        process.exit(1);
+    }
     const provider = await pickProvider();
     const addr = ethers.getAddress(wallet);
 
